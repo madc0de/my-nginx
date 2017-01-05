@@ -1,6 +1,6 @@
 #!/bin/bash
 # Nginx 1.9.7 + * Modules.
-# Author RAW.
+# Author RAW. // systemroot.me
 ##########################
 
 
