@@ -1,5 +1,5 @@
 #!/bin/bash
-# Nginx 1.9.7 + 9 Modules.
+# Nginx 1.9.7 + * Modules.
 # Author RAW.
 ##########################
 
@@ -11,11 +11,14 @@ apt-get upgrade -y
 apt-get dist-upgrade -y
 apt-get install build-essential -y
 apt-get install checkinstall libpcre3 libpcre3-dev zlib1g zlib1g-dbg libxml2 zlib1g-dev -y
-apt-get install openssl libssl-dev libperl-dev -y
+sudo apt-get install libmozjs-24-bin; sudo ln -sf /usr/bin/js24 /usr/bin/js
+apt-get install openssl libssl-dev libperl-dev libexpat-dev -y
+sudo apt-get install mercurial meld -y
 apt-get install libxslt-dev -y
 apt-get install libgd2-xpm -y
 apt-get install libgd2-xpm-dev -y
 apt-get install libgeoip-dev -y
+apt-get install libssl libssl-dev -y
 
 #Modules.
 mkdir -p /opt/nginx/modules/
@@ -28,13 +31,18 @@ cd /opt/nginx/modules/
 rm -Rf nginx_redis/
 cd /opt/nginx/modules/
 git clone https://github.com/openresty/set-misc-nginx-module.git
-git clone https://github.com/pagespeed/ngx_pagespeed.git
+hg clone http://hg.nginx.org/njs
+git clone https://github.com/yaoweibin/nginx_tcp_proxy_module.git
+git clone git://github.com/vozlt/nginx-module-vts.git
+git clone https://github.com/peter-leonov/ngx_http_js_module.git
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone https://github.com/kyprizel/testcookie-nginx-module.git
 git clone https://github.com/openresty/headers-more-nginx-module.git
 git clone https://github.com/openresty/echo-nginx-module.git
 git clone https://github.com/arut/nginx-dav-ext-module.git
 git clone https://github.com/masterzen/nginx-upload-progress-module.git
+git clone https://github.com/nginx-clojure/nginx-access-plus.git
+git clone https://github.com/leev/ngx_http_geoip2_module.git
 
 #Pagespeed Library
 cd /opt/nginx/modules/ngx_pagespeed
@@ -74,14 +82,20 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/bu.sh
 --with-stream \
 --with-stream_ssl_module \
 --with-threads \
+--with-http_dav_module \
 --add-module=/opt/nginx/modules/ngx_devel_kit-0.2.19 \
 --add-module=/opt/nginx/modules/testcookie-nginx-module \
 --add-module=/opt/nginx/modules/set-misc-nginx-module \
 --add-module=/opt/nginx/modules/headers-more-nginx-module \
 --add-module=/opt/nginx/modules/echo-nginx-module \
+--add-module=/opt/nginx/modules/njs/nginx \
+--add-module=/opt/nginx/modules/nginx-access-plus/src/c \
+--add-module=/opt/nginx/modules/ngx_http_js_module \
+--ad-module=/opt/nginx/modules/nginx_tcp_proxy_module \
 --add-module=/opt/nginx/modules/nginx-dav-ext-module \
---add-module=/opt/nginx/modules/ngx_pagespeed \
+--add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
+--add-module=/opt/nginx/modules/ngx_http_geoip2_module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
 
 make
