@@ -9,7 +9,7 @@ chmod +x fixit.sh
 apt-get update -y
 apt-get upgrade -y
 apt-get dist-upgrade -y
-apt-get install build-essential -y
+apt-get install apt-utils build-essential -y
 apt-get install checkinstall libpcre3 libpcre3-dev zlib1g zlib1g-dbg libxml2 zlib1g-dev -y
 sudo apt-get install libmozjs-24-bin; sudo ln -sf /usr/bin/js24 /usr/bin/js
 apt-get install openssl libssl-dev libperl-dev libexpat-dev -y
