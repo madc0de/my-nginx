@@ -9,7 +9,7 @@ server {
 
         }
         #Party 1 Server
-        location / {
+        location /party1 {
             proxy_pass http://websocket1;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -17,7 +17,7 @@ server {
 
         }
         #Party 2 Server
-        location / {
+        location /party2 {
             proxy_pass http://websocket2;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -25,7 +25,7 @@ server {
 
         }
         #Party3 Server
-        location / {
+        location /party3 {
             proxy_pass http://websocket3;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
