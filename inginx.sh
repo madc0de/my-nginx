@@ -66,7 +66,9 @@ rm -Rf nginx-1.9.7.tar.gz
 
 #Compile Nginx With Modules.
 cd /opt/nginx/sources/nginx-1.9.7/
-cat <<EOF > /opt/nginx/sources/nginx-1.9.7/bu.sh
+cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
+make clean
+patch -p1 < /opt/nginx/modules/nginx_tcp_proxy_module/tcp.patch
 ./configure \
 --user=nginx \
 --group=nginx \
@@ -102,14 +104,13 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/bu.sh
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
-
 make
 make install
 EOF
 
 #Starting.
 cd /opt/nginx/sources/nginx-1.9.7/
-sudo sh bu.sh
+sudo sh build.sh
 
 echo "-------------------------------------"
 echo "~///////////////////////////////////~"
