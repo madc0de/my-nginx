@@ -12,14 +12,22 @@ apt-get dist-upgrade -y
 apt-get install apt-utils build-essential -y
 apt-get install git -y
 apt-get install checkinstall libpcre3 libpcre3-dev zlib1g zlib1g-dbg libxml2 zlib1g-dev -y
-sudo apt-get install -y libmozjs-24-bin; sudo ln -sf /usr/bin/js24 /usr/bin/js
+apt-get install -y libicu-dev libcurl4-gnutls-dev libtool
+apt-get install -y libmozjs-24-dev
+apt-get install -y libmozjs-24-bin; sudo ln -sf /usr/bin/js24 /usr/bin/js
 apt-get install openssl libssl-dev libperl-dev libexpat-dev -y
-sudo apt-get install mercurial meld -y
+apt-get install mercurial meld -y
 apt-get install libxslt-dev -y
 apt-get install libgd2-xpm -y
 apt-get install libgd2-xpm-dev -y
 apt-get install libgeoip-dev -y
 apt-get install libssl libssl-dev -y
+apt-get install dh-autoreconf -y
+sudo add-apt-repository ppa:maxmind/ppa -y
+apt-get install aptitude -y
+aptitude update -y
+aptitude upgrade -y
+aptitude install libmaxminddb0 libmaxminddb-dev mmdb-bin -y
 
 #Modules.
 mkdir -p /opt/nginx/modules/
@@ -32,10 +40,8 @@ cd /opt/nginx/modules/
 rm -Rf nginx_redis/
 cd /opt/nginx/modules/
 git clone https://github.com/openresty/set-misc-nginx-module.git
-hg clone http://hg.nginx.org/njs
 git clone https://github.com/yaoweibin/nginx_tcp_proxy_module.git
 git clone git://github.com/vozlt/nginx-module-vts.git
-git clone https://github.com/peter-leonov/ngx_http_js_module.git
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone https://github.com/kyprizel/testcookie-nginx-module.git
 git clone https://github.com/openresty/headers-more-nginx-module.git
@@ -89,9 +95,7 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/bu.sh
 --add-module=/opt/nginx/modules/set-misc-nginx-module \
 --add-module=/opt/nginx/modules/headers-more-nginx-module \
 --add-module=/opt/nginx/modules/echo-nginx-module \
---add-module=/opt/nginx/modules/njs/nginx \
 --add-module=/opt/nginx/modules/nginx-access-plus/src/c \
---add-module=/opt/nginx/modules/ngx_http_js_module \
 --add-module=/opt/nginx/modules/nginx_tcp_proxy_module \
 --add-module=/opt/nginx/modules/nginx-dav-ext-module \
 --add-module=/opt/nginx/modules/nginx-module-vts \
