@@ -92,7 +92,7 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/bu.sh
 --add-module=/opt/nginx/modules/njs/nginx \
 --add-module=/opt/nginx/modules/nginx-access-plus/src/c \
 --add-module=/opt/nginx/modules/ngx_http_js_module \
---ad-module=/opt/nginx/modules/nginx_tcp_proxy_module \
+--add-module=/opt/nginx/modules/nginx_tcp_proxy_module \
 --add-module=/opt/nginx/modules/nginx-dav-ext-module \
 --add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
