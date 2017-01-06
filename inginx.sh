@@ -69,8 +69,6 @@ rm -Rf nginx-1.9.7.tar.gz
 #Compile Nginx With Modules.
 cd /opt/nginx/sources/nginx-1.9.7/
 cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
-make clean
-patch -p1 < /opt/nginx/modules/nginx_tcp_proxy_module/tcp.patch
 ./configure \
 --user=nginx \
 --group=nginx \
