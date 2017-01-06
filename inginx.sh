@@ -12,6 +12,7 @@ apt-get dist-upgrade -y
 apt-get install apt-utils build-essential -y
 apt-get install git -y
 apt-get install checkinstall libpcre3 libpcre3-dev zlib1g zlib1g-dbg libxml2 zlib1g-dev -y
+apt-get install -y unzip
 apt-get install -y libicu-dev libcurl4-gnutls-dev libtool
 apt-get install -y libmozjs-24-dev
 apt-get install -y libmozjs-24-bin; sudo ln -sf /usr/bin/js24 /usr/bin/js
@@ -40,7 +41,6 @@ cd /opt/nginx/modules/
 rm -Rf nginx_redis/
 cd /opt/nginx/modules/
 git clone https://github.com/openresty/set-misc-nginx-module.git
-git clone https://github.com/yaoweibin/nginx_tcp_proxy_module.git
 git clone git://github.com/vozlt/nginx-module-vts.git
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone https://github.com/kyprizel/testcookie-nginx-module.git
@@ -50,12 +50,14 @@ git clone https://github.com/arut/nginx-dav-ext-module.git
 git clone https://github.com/masterzen/nginx-upload-progress-module.git
 git clone https://github.com/nginx-clojure/nginx-access-plus.git
 git clone https://github.com/leev/ngx_http_geoip2_module.git
+wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
+unzip v1.12.34.2-beta.zip
+rm -Rf v1.12.34.2-beta.zip
 
 #Pagespeed Library
-cd /opt/nginx/modules/ngx_pagespeed
-wget https://dl.google.com/dl/page-speed/psol/1.11.33.2.tar.gz
-tar -xzvf 1.11.33.2.tar.gz
-rm -Rf 1.11.33.2.tar.gz
+cd /opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta
+wget https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
+tar -xzvf 1.12.34.2-x64.tar.gz
 
 #Nginx 1.9.7
 mkdir -p /opt/nginx/sources/
@@ -93,12 +95,12 @@ patch -p1 < /opt/nginx/modules/nginx_tcp_proxy_module/tcp.patch
 --with-threads \
 --with-http_dav_module \
 --add-module=/opt/nginx/modules/ngx_devel_kit-0.2.19 \
+--add-module=/opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta \
 --add-module=/opt/nginx/modules/testcookie-nginx-module \
 --add-module=/opt/nginx/modules/set-misc-nginx-module \
 --add-module=/opt/nginx/modules/headers-more-nginx-module \
 --add-module=/opt/nginx/modules/echo-nginx-module \
 --add-module=/opt/nginx/modules/nginx-access-plus/src/c \
---add-module=/opt/nginx/modules/nginx_tcp_proxy_module \
 --add-module=/opt/nginx/modules/nginx-dav-ext-module \
 --add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
