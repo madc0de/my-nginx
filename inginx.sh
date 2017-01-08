@@ -121,6 +121,8 @@ echo "~///////////////////////////////////~"
 read -p "If you want we can fix nginx Are you OK with this? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
+   mkdir /tmp
+   cd /tmp/; wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/fixit.sh; chmod +x fixit.sh
    ./fixit.sh
 else
   echo "Ok."
