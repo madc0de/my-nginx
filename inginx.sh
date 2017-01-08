@@ -24,11 +24,14 @@ apt-get install libgd2-xpm-dev -y
 apt-get install libgeoip-dev -y
 apt-get install libssl libssl-dev -y
 apt-get install dh-autoreconf -y
+apt-get install -y software-properties-common
+apt-get install -y python-software-properties
 sudo add-apt-repository ppa:maxmind/ppa -y
 apt-get install aptitude -y
 aptitude update -y
 aptitude upgrade -y
 aptitude install libmaxminddb0 libmaxminddb-dev mmdb-bin -y
+
 
 #Modules.
 mkdir -p /opt/nginx/modules/
