@@ -44,7 +44,7 @@ cd /opt/nginx/modules/
 rm -Rf nginx_redis/
 cd /opt/nginx/modules/
 git clone https://github.com/openresty/set-misc-nginx-module.git
-git clone git://github.com/vozlt/nginx-module-vts.git
+git clone https://github.com/vozlt/nginx-module-vts.git
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone https://github.com/kyprizel/testcookie-nginx-module.git
 git clone https://github.com/openresty/headers-more-nginx-module.git
