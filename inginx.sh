@@ -54,7 +54,6 @@ git clone https://github.com/masterzen/nginx-upload-progress-module.git
 git clone https://github.com/nginx-clojure/nginx-access-plus.git
 git clone https://github.com/leev/ngx_http_geoip2_module.git
 wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
-git clone https://github.com/openresty/lua-nginx-module.git
 unzip v1.12.34.2-beta.zip
 rm -Rf v1.12.34.2-beta.zip
 
@@ -107,7 +106,6 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
---add-module=/opt/nginx/modules/lua-nginx-module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
 make
 make install
