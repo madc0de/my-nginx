@@ -2,7 +2,10 @@
 # Nginx 1.9.7 + * Modules.
 # Author RAW. // systemroot.me
 ##########################
-
+echo "I don't suggest to run this as ./inginx.sh"
+echo "If there are errors for missing packs that will be skipped and this will installed wrongly!"
+echo "So execute commands one by one!!"
+sleep 20
 
 #Before.
 chmod +x fixit.sh
@@ -26,6 +29,7 @@ apt-get install libssl libssl-dev -y
 apt-get install dh-autoreconf -y
 apt-get install -y software-properties-common
 apt-get install -y python-software-properties
+apt-get install -y libcairo2 libcairo2-dev
 sudo add-apt-repository ppa:maxmind/ppa -y
 apt-get install aptitude -y
 aptitude update -y
@@ -53,6 +57,7 @@ git clone https://github.com/arut/nginx-dav-ext-module.git
 git clone https://github.com/masterzen/nginx-upload-progress-module.git
 git clone https://github.com/nginx-clojure/nginx-access-plus.git
 git clone https://github.com/leev/ngx_http_geoip2_module.git
+git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
 wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
 unzip v1.12.34.2-beta.zip
 rm -Rf v1.12.34.2-beta.zip
@@ -106,6 +111,7 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
+--add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
 make
 make install
