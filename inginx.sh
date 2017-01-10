@@ -5,10 +5,9 @@
 echo "I don't suggest to run this as ./inginx.sh"
 echo "If there are errors for missing packs that will be skipped and this will installed wrongly!"
 echo "So execute commands one by one!!"
-sleep 20
+sleep 15
 
 #Before.
-chmod +x fixit.sh
 apt-get update -y
 apt-get upgrade -y
 apt-get dist-upgrade -y
