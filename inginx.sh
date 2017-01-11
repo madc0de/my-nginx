@@ -2,11 +2,6 @@
 # Nginx 1.9.7 + * Modules.
 # Author RAW. // systemroot.me
 ##########################
-echo "I don't suggest to run this as ./inginx.sh"
-echo "If there are errors for missing packs that will be skipped and this will installed wrongly!"
-echo "So execute commands one by one!!"
-sleep 15
-
 #Before.
 apt-get update -y
 apt-get upgrade -y
@@ -125,16 +120,8 @@ EOF
 cd /opt/nginx/sources/nginx-1.9.7/
 sudo sh build.sh
 
-echo "-------------------------------------"
-echo "~///////////////////////////////////~"
-#ask to fix it.
-read -p "If you want we can fix nginx Are you OK with this? <y/N> " prompt
-if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
-then
-   mkdir /tmp
-   cd /tmp/; wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/fixit.sh; chmod +x fixit.sh
-   ./fixit.sh
-else
-  echo "Ok."
-  exit 0
-fi
+#Fix.
+mkdir -p /tmp
+cd /tmp/; wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/fixit.sh; chmod +x fixit.sh
+./fixit.sh
+
