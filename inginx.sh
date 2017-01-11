@@ -35,6 +35,11 @@ aptitude update -y
 aptitude upgrade -y
 aptitude install libmaxminddb0 libmaxminddb-dev mmdb-bin -y
 
+#Creating dirs.
+mkdir -p /hostdata/conf/nginx/sites/
+mkdir -p /hostdata/conf/nginx/logs/
+mkdir -p /hostdata/caches/nginx/
+
 
 #Modules.
 mkdir -p /opt/nginx/modules/
