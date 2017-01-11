@@ -6,13 +6,10 @@ wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/i
 chmod +x nginx
 cd /etc/nginx/
 mkdir conf.d
-mkdir sites-enabled
-mkdir sites-available
 mv nginx.conf /etc/nginx/nginx.conf.1.old
 wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/nginx/nginx.conf
-cd /etc/nginx/sites-enabled/
-wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/nginx/sites-enabled/default
-wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/nginx/sites-enabled/test1
+cd /hostdata/conf/nginx/sites/
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/conf/nginx/sites/dopeinfinity
 mkdir -p /usr/share/nginx/html
 cat <<EOF > /usr/share/nginx/html/index.html
 
@@ -29,14 +26,7 @@ cat <<EOF > /usr/share/nginx/html/index.html
 </style>
 </head>
 <body>
-<h1>Welcome to nginx, Builded By The Raw!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
-
-<p>For Help Create One Issue On Github
-<a href="https://github.com/systemroot/obb-core/issues" target="_blank">OBB-CORE</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
+<h1>Personal V. Builded By Me.</h1>
 </body>
 </html>
 EOF
