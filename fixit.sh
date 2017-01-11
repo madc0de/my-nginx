@@ -6,7 +6,7 @@ wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/i
 chmod +x nginx
 cd /etc/nginx/
 mkdir conf.d
-mv nginx.conf /etc/nginx/nginx.conf.1.old
+rm -Rf nginx.conf
 wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/nginx/nginx.conf
 cd /hostdata/conf/nginx/sites/
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/conf/nginx/sites/dopeinfinity
@@ -31,14 +31,4 @@ cat <<EOF > /usr/share/nginx/html/index.html
 </html>
 EOF
 
-
-echo "---------------------------------------------------------------------------"
-echo "~/////////////////////////////////////////////////////////////////////////~"
-echo "~/////////////////////////////////////////////////////////////////////////~"
-echo "nginx.conf is at /etc/nginx/nginx.conf"
-echo "You can Start/restart/stop nginx with 'service nginx *'"
-echo "Als you can use 'nginx -t' to check if all is ok.!"
-echo "If you have any suggestion for a module or whatever please suggest it at Issue On github."
-echo "~/////////////////////////////////////////////////////////////////////////~"
-echo "~/////////////////////////////////////////////////////////////////////////~"
-echo "~/////////////////////////////////////////////////////////////////////////~"
+echo "is done bruh!"
