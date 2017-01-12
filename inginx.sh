@@ -125,6 +125,6 @@ sudo sh build.sh
 
 #Fix.
 mkdir -p /tmp
-cd /tmp/; wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/fixit.sh; chmod +x fixit.sh
+cd /tmp/; wget https://raw.githubusercontent.com/systemroot/my-nginx/master/fixit.sh; chmod +x fixit.sh
 ./fixit.sh
 
