@@ -1,6 +1,7 @@
 #!/bin/bash
 #After.
 useradd -r nginx
+rm -Rf /etc/init.d/nginx
 cd /etc/init.d/
 wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/init.d/nginx
 chmod +x nginx
