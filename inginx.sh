@@ -95,6 +95,7 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --with-http_xslt_module \
 --with-http_ssl_module \
 --with-http_stub_status_module \
+--with-http_realip_module \
 --with-stream \
 --with-stream_ssl_module \
 --with-threads \
