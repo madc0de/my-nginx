@@ -1,18 +1,13 @@
 server {
         listen 80 default_server;
-
-        #root /usr/share/nginx/html;
-        #index index.php index.html index.htm;
         server_name localhost;
 
         location / {
                  return http://$host/welcome
         }
-        location /welcome {
-         default_type 'text/html';
 
-         content_by_lua_block {
-             ngx.say('<html><center>Thank Your For Using This Project!')
-             ngx.say('You Can Make Suggestions Or Get Help On Github <a href="https://github.com/systemroot/my-nginx" target="_blank">ISSUES</a> </center></html>')
+        location /welcome {
+                 root /hostdata/default;
+                 index index.html;
         }
 }
