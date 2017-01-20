@@ -2,6 +2,7 @@
 # Nginx 1.9.7 + * Modules.
 # Author RAW. // systemroot.me
 ##########################
+
 #Before.
 apt-get update -y
 apt-get upgrade -y
@@ -24,16 +25,12 @@ apt-get install dh-autoreconf -y
 apt-get install -y software-properties-common
 apt-get install -y python-software-properties
 apt-get install -y libcairo2 libcairo2-dev
+apt-get install -y python-dev
 sudo add-apt-repository ppa:maxmind/ppa -y
 apt-get install aptitude -y
 aptitude update -y
 aptitude upgrade -y
 aptitude install libmaxminddb0 libmaxminddb-dev mmdb-bin -y
-
-#Creating dirs.
-mkdir -p /hostdata/conf/nginx/sites/
-mkdir -p /hostdata/conf/nginx/logs/
-mkdir -p /hostdata/caches/nginx/
 
 
 #Modules.
@@ -56,8 +53,9 @@ git clone https://github.com/arut/nginx-dav-ext-module.git
 git clone https://github.com/masterzen/nginx-upload-progress-module.git
 git clone https://github.com/nginx-clojure/nginx-access-plus.git
 git clone https://github.com/leev/ngx_http_geoip2_module.git
-git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
 git clone https://github.com/flant/nginx-http-rdns.git
+git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
+git clone https://github.com/openresty/lua-nginx-module.git
 wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
 unzip v1.12.34.2-beta.zip
 rm -Rf v1.12.34.2-beta.zip
@@ -66,6 +64,12 @@ rm -Rf v1.12.34.2-beta.zip
 cd /opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta
 wget https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
 tar -xzvf 1.12.34.2-x64.tar.gz
+
+#LuaJIT Library
+cd /opt/nginx/modules/
+git clone http://luajit.org/git/luajit-2.0.git
+cd luajit-2.0/
+make && sudo make install
 
 #Nginx 1.9.7
 mkdir -p /opt/nginx/sources/
@@ -98,9 +102,11 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --with-http_stub_status_module \
 --with-http_realip_module \
 --with-stream \
+--with-debug \
 --with-stream_ssl_module \
 --with-threads \
 --with-http_dav_module \
+--with-ld-opt="-Wl,-rpath,/usr/local/lib/" \
 --add-module=/opt/nginx/modules/ngx_devel_kit-0.2.19 \
 --add-module=/opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta \
 --add-module=/opt/nginx/modules/testcookie-nginx-module \
@@ -113,6 +119,8 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
 --add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
+--add-module=/opt/nginx/modules/nginx-http-rdns \
+--add-module=/opt/nginx/modules/lua-nginx-module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
 make
 make install
@@ -122,8 +130,16 @@ EOF
 cd /opt/nginx/sources/nginx-1.9.7/
 sudo sh build.sh
 
-#Fix.
-mkdir -p /tmp
-cd /tmp/; wget https://raw.githubusercontent.com/systemroot/my-nginx/master/fixit.sh; chmod +x fixit.sh
-./fixit.sh
-
+echo "-------------------------------------"
+echo "~///////////////////////////////////~"
+#ask to fix it.
+read -p "If you want we can fix nginx Are you OK with this? <y/N> " prompt
+if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+then
+   mkdir /tmp
+   cd /tmp/; wget https://raw.githubusercontent.com/systemroot/my-nginx/master/fixit.sh; chmod +x fixit.sh
+   ./fixit.sh
+else
+  echo "Ok."
+  exit 0
+fi
