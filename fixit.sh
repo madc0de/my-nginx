@@ -8,11 +8,10 @@ chmod +x nginx
 mkdir -p /etc/nginx/
 cd /etc/nginx/
 mkdir conf.d
-rm -Rf nginx.conf
+rm -Rf nginx.conf*
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/nginx.conf
-mkdir -p /hostdata/conf/nginx/sites/
-cd /hostdata/conf/nginx/sites/
-rm -Rf default
+mkdir -p /nginx/sites/
+cd /nginx/sites/
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/sites-enabled/default
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/conf/nginx/sites/dopeinfinity
 mkdir -p /usr/share/nginx/html
