@@ -3,13 +3,13 @@
 useradd -r nginx
 rm -Rf /etc/init.d/nginx
 cd /etc/init.d/
-wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/init.d/nginx
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/init.d/nginx
 chmod +x nginx
 mkdir -p /etc/nginx/
 cd /etc/nginx/
 mkdir conf.d
 rm -Rf nginx.conf
-wget https://raw.githubusercontent.com/systemroot/nginx-proxy-stats/master/etc/nginx/nginx.conf
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/nginx.conf
 mkdir -p /hostdata/conf/nginx/sites/
 cd /hostdata/conf/nginx/sites/
 rm -Rf default
