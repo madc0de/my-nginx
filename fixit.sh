@@ -12,8 +12,8 @@ rm -Rf nginx.conf*
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/nginx.conf
 mkdir -p /nginx/sites/
 cd /nginx/sites/
-wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/sites-enabled/default
-wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/conf/nginx/sites/dopeinfinity
+wget https://github.com/systemroot/my-nginx/blob/master/nginx/sites/default
+wget https://github.com/systemroot/my-nginx/blob/master/nginx/sites/dopeinfinity
 mkdir -p /usr/share/nginx/html
 cat <<EOF > /usr/share/nginx/html/index.html
 
