@@ -8,7 +8,7 @@ server {
         location / {
                  return http://$host/welcome
         }
-        location /lua_content {
+        location /welcome {
          default_type 'text/html';
 
          content_by_lua_block {
