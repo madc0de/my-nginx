@@ -3,7 +3,7 @@ server {
         server_name localhost;
 
         location / {
-                 return http://$host/welcome
+                 return http://$host/welcome;
         }
 
         location /welcome {
