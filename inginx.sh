@@ -113,7 +113,6 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
 --add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
---add-module=/opt/nginx/modules/nginx-http-rdns \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
 make
 make install
