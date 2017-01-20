@@ -1,0 +1,3 @@
+We don't use default dir (/etc/nginx/sites-enabled/)
+we like to use custom dir (/nginx/sites/)
+to store our conf's for our sites.
