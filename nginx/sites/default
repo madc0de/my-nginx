@@ -3,24 +3,14 @@ server {
         root /hostdata/default;
         index index.html;
         server_name localhost;
-        testcookie off;
-        testcookie_name theraw;
-        testcookie_secret random;
-        testcookie_session $remote_addr;
-        testcookie_arg try;
-        testcookie_max_attempts 1;
-        testcookie_fallback http://$host$uri?$query_string;
-        testcookie_get_only on;
-        testcookie_redirect_via_refresh on;
-        testcookie_refresh_template '<html><body><script>document.cookie="THERAW=$testcookie_set";location.href="$testcookie_nexturl";</script></body></html>';
 
 
         location / {
-         testcookie on;
          access_log /hostdata/default/access.log upstream_time;
          error_log  /hostdata/default/error.log;
          try_files $uri $uri/ =404;
         }
+
         location /status {
          vhost_traffic_status_display;
          vhost_traffic_status_display_format html;
