@@ -28,3 +28,15 @@ Or n and hit enter if you know what are u doing.
  https://github.com/openresty/lua-nginx-module.git
  https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
 ```
+
+# Library
+
+```
+ x Pagespeed by google https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
+ x Lua http://luajit.org/git/luajit-2.0.git
+ ```
+# Nginx Version
+
+```
+1.9.7 http://nginx.org/download/nginx-1.9.7.tar.gz
+```
