@@ -40,3 +40,16 @@ Or n and hit enter if you know what are u doing.
 ```
 1.9.7 http://nginx.org/download/nginx-1.9.7.tar.gz
 ```
+# Info
+
+I Use **/hostdata** Directory to host my websites.
+
+And nginx.conf is on the same old place **/etc/nginx/**
+
+Website Vhosts are placed on **/nginx/sites/**
+
+Nginx will use "www-data" user and is auto mode for usage of cpu. 
+
+# Examples. 
+
+Will be placed => https://github.com/systemroot/my-nginx/tree/master/example
