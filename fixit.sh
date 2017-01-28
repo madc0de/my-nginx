@@ -13,7 +13,6 @@ wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/ngin
 mkdir -p /nginx/sites/
 cd /nginx/sites/
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx/sites/default
-wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx/sites/dopeinfinity
 mkdir -p /usr/share/nginx/html
 mkdir -p /hostdata/default
 cd /hostdata/default
