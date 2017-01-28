@@ -48,7 +48,9 @@ And nginx.conf is on the same old place **/etc/nginx/**
 
 Website Vhosts are placed on **/nginx/sites/**
 
-Nginx will use "www-data" user and is auto mode for usage of cpu. 
+Nginx will use "www-data" user and is auto mode for usage of cpu.
+
+Script will not install php. (C.Soon with php-fpm 5.6)
 
 # Examples. 
 
