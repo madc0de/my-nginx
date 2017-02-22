@@ -13,6 +13,7 @@ server {
            add_header X-Server Alpha;
            add_header Content-Security-Policy "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com";
            add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload;";
+           add_header Referrer-Policy "no-referrer-when-downgrade";
 
 
         location / {
