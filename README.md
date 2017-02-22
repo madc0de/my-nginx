@@ -1,5 +1,7 @@
 # Installation.
 
+Supported And Tested On : Ubuntu 14.04
+
 1. **`$ apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get install wget -y`**
 
 2. **`$ wget https://raw.githubusercontent.com/systemroot/my-nginx/master/inginx.sh; chmod +x inginx.sh`**
@@ -55,3 +57,13 @@ Script will not install php. (C.Soon with php-fpm 5.6)
 # Examples. 
 
 Will be placed => https://github.com/systemroot/my-nginx/tree/master/example
+
+# Support & Suggestion.
+
+You can post on issues tab if you have any problem, remember i gave support for installation script for modules etc you need to go and ask for support in their repo's.
+
+Suggestion, You can do any suggestion from issues or by pull requests.
+
+# Credits.
+
+Script Created By 𝓣𝓱𝒆 ℛ𝓪𝔀.
