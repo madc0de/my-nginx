@@ -12,7 +12,10 @@ At the end of installation you will be asked from script to fix nginx bin, wrote
 
 Or n and hit enter if you know what are u doing.
 
+OR
+
 Compile And install with php5.6-fpm.
+
 **`$ curl -s https://raw.githubusercontent.com/systemroot/raws-dev/master/install | bash -s --`**
 
 **`$ raws inginx`**
