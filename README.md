@@ -75,7 +75,3 @@ Suggestion, You can do any suggestion from issues or by pull requests.
 # Credits.
 
 Script Created By 𝓣𝓱𝒆 ℛ𝓪𝔀.
-
-# In Proccess. 
-
-This repo is under a upgrade! i don't suggest to try this at this time! I'll delete this part of text when's Done.
