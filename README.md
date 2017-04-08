@@ -16,7 +16,7 @@ OR
 
 Compile And install with php5.6-fpm.
 
-**`$ curl -s https://raw.githubusercontent.com/systemroot/raws-dev/master/install | bash -s --`**
+**`$ curl -s -LA "Raws InS" "http://bit.ly/2oflwVi" | bash -s INSTALL`**
 
 **`$ raws inginx`**
 
