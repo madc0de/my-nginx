@@ -78,7 +78,7 @@ Script Created By 𝓣𝓱𝒆 ℛ𝓪𝔀.
 # Why?
 
 My main idea to create this project is "Security" i pay a low price for some dedicated servers, but they doesn't have a anti-DDoS Firewall.
-But i have a VPS from ovh which ovh have the mos powerful firewall and i've install "My-Nginx" on it to use as a proxy and forwarding domains.
+But i have a VPS from ovh which ovh have the most powerful firewall and i've install "My-Nginx" on it to use as a proxy and forwarding domains.
 So there's how this go,
 
 **`"Unprotected server, Big data hosted" => OVH FIREWALL "My-Nginx" => World.`**
