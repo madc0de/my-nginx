@@ -60,7 +60,6 @@ Website Vhosts are placed on **/nginx/sites/**
 
 Nginx will use "www-data" user and is auto mode for usage of cpu.
 
-Script will not install php. (C.Soon with php-fpm 5.6)
 
 # Examples. 
 
@@ -75,3 +74,15 @@ Suggestion, You can do any suggestion from issues or by pull requests.
 # Credits.
 
 Script Created By 𝓣𝓱𝒆 ℛ𝓪𝔀.
+
+# Why?
+
+My main idea to create this project is "Security" i pay a low price for some dedicated servers, but they doesn't have a anti-DDoS Firewall.
+But i have a VPS from ovh which ovh have the mos powerful firewall and i've install "My-Nginx" on it to use as a proxy and forwarding domains.
+So there's how this go,
+
+**`"Unprotected server, Big data hosted" => OVH FIREWALL "My-Nginx" => World.`**
+
+**`My-domain.com, Pointed to => OVH VPS IP "My-Nginx", My nginx forwards it to => "Unprotected server, Big data hosted"`**
+
+So no one is able to find unprotected server ip or to know what i'm doing.
