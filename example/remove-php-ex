@@ -1,0 +1,24 @@
+#This is just a example to run your website without .php/.html
+#And using board.php as default index page not like basic think which is : index.php
+
+server {
+        listen 80;
+        root /hostdata/dopeinfinity.io/public_html;
+        index board.php;
+        server_name dopeinfinity.io www.dopeinfinity.io;
+
+        location / {
+           access_log /hostdata/dopeinfinity.io/logs/access.log upstream_time;
+           error_log  /hostdata/dopeinfinity.io/logs/error.log;
+           try_files $uri $uri/ $uri.html $uri.php$is_args$query_string;
+        }
+
+        location ~ \.php {
+          if ($request_uri ~ ^/([^?]*)\.php($|\?)) {  return 302 /$1?$args;  }
+          try_files $uri =404;
+          fastcgi_pass 127.0.0.1:9000;
+          fastcgi_index index.php;
+          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          include fastcgi_params;
+         }
+}
