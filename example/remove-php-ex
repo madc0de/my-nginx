@@ -1,4 +1,4 @@
-#This is just a example to run your website without .php/.html
+#This is just a example to run your website without .php/.html (Method POST works!)
 #And using board.php as default index page not like basic think which is : index.php
 
 server {
