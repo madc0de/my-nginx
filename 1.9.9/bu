@@ -19,7 +19,6 @@
 --with-http_stub_status_module \
 --with-http_realip_module \
 --with-stream \
---with-debug \
 --with-stream_ssl_module \
 --with-threads \
 --with-http_dav_module \
