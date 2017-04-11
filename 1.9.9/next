@@ -1,0 +1,78 @@
+#LuaJIT Library
+cd /opt/nginx/modules/
+git clone http://luajit.org/git/luajit-2.0.git
+cd luajit-2.0/
+make && sudo make install
+
+#Nginx 1.9.7
+mkdir -p /opt/nginx/sources/
+cd /opt/nginx/sources/
+wget 'http://nginx.org/download/nginx-1.9.7.tar.gz'
+tar -xzvf nginx-1.9.7.tar.gz
+rm -Rf nginx-1.9.7.tar.gz
+
+#Compile Nginx With Modules.
+cd /opt/nginx/sources/nginx-1.9.7/
+cat <<EOF > /opt/nginx/sources/nginx-1.9.7/build.sh
+./configure \
+--user=nginx \
+--group=nginx \
+--sbin-path=/usr/sbin/nginx           \
+--conf-path=/etc/nginx/nginx.conf     \
+--pid-path=/var/run/nginx.pid         \
+--lock-path=/var/run/nginx.lock       \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--with-pcre                           \
+--with-http_geoip_module \
+--with-http_gunzip_module \
+--with-http_gzip_static_module \
+--with-http_image_filter_module \
+--with-http_secure_link_module \
+--with-http_sub_module \
+--with-http_xslt_module \
+--with-http_ssl_module \
+--with-http_stub_status_module \
+--with-http_realip_module \
+--with-stream \
+--with-debug \
+--with-stream_ssl_module \
+--with-threads \
+--with-http_dav_module \
+--with-ld-opt="-Wl,-rpath,/usr/local/lib/" \
+--add-module=/opt/nginx/modules/ngx_devel_kit-0.2.19 \
+--add-module=/opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta \
+--add-module=/opt/nginx/modules/testcookie-nginx-module \
+--add-module=/opt/nginx/modules/set-misc-nginx-module \
+--add-module=/opt/nginx/modules/headers-more-nginx-module \
+--add-module=/opt/nginx/modules/echo-nginx-module \
+--add-module=/opt/nginx/modules/nginx-access-plus/src/c \
+--add-module=/opt/nginx/modules/nginx-dav-ext-module \
+--add-module=/opt/nginx/modules/nginx-module-vts \
+--add-module=/opt/nginx/modules/ngx_cache_purge \
+--add-module=/opt/nginx/modules/ngx_http_geoip2_module \
+--add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
+--add-module=/opt/nginx/modules/nginx-http-rdns \
+--add-module=/opt/nginx/modules/lua-nginx-module \
+--add-module=/opt/nginx/modules/nginx-upload-progress-module
+make
+make install
+EOF
+
+#Starting.
+cd /opt/nginx/sources/nginx-1.9.7/
+sudo sh build.sh
+
+echo "-------------------------------------"
+echo "~///////////////////////////////////~"
+#ask to fix it.
+read -p "If you want we can fix nginx Are you OK with this? <y/N> " prompt
+if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+then
+   mkdir /tmp
+   cd /tmp/; wget https://raw.githubusercontent.com/systemroot/my-nginx/master/fixit.sh; chmod +x fixit.sh
+   ./fixit.sh
+else
+  echo "Ok."
+  exit 0
+fi
