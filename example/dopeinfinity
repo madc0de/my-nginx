@@ -1,50 +1,106 @@
 server {
-           listen                    aaaaaaaaaaaaaaaaaaaaaa:80;
-           server_name               dopeinfinity.io www.dopeinfinity.io;
-           keepalive_timeout         2;
-           resolver                  8.8.8.8;
-           root                      /hostdata/dopeinfinity.io/public_html;
-           index                     index.html;
-           
-           add_header X-Frame-Options "SAMEORIGIN" always;
-           add_header X-Content-Type-Options "nosniff" always;
-           add_header X-Xss-Protection "1; mode=block";
-           add_header X-Powered-By TheRaw;
-           add_header X-Server Alpha;
-           add_header Content-Security-Policy "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com";
-           add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload;";
-           add_header Referrer-Policy "no-referrer-when-downgrade";
+        listen 80;
+        root /hostdata/dopeinfinity.io/public_html;
+        index dashboard.php;
+        server_name dopeinfinity.io www.dopeinfinity.io;
+
+        location / {
+            return https://$server_name/;
+        }
+
+        location ~ \.php {
+          if ($request_uri ~ ^/([^?]*)\.php($|\?)) {  return 302 /$1?$args;  }
+          #try_files $uri /index.php =404;
+          try_files $uri =404;
+          fastcgi_pass 127.0.0.1:9000;
+          fastcgi_index index.php;
+          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          include fastcgi_params;
+         }
+}
+server {
+
+        listen   443;
+        root /hostdata/dopeinfinity.io/public_html;
+        index dashboard.php;
+        server_name dopeinfinity.io www.dopeinfinity.io;
+        access_log /hostdata/dopeinfinity.io/logs/access.log upstream_time;
+        error_log  /hostdata/dopeinfinity.io/logs/error.log;
+
+        #Google PageSpeed
+        pagespeed on;
+        pagespeed FileCachePath /var/ngx_pagespeed_cache;
+        location ~ "\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+" {
+            add_header "" "";
+        }
+        location ~ "^/pagespeed_static/" { }
+        location ~ "^/ngx_pagespeed_beacon$" { }
+        pagespeed EnableFilters insert_dns_prefetch;
+        pagespeed EnableFilters prioritize_critical_css;
+        pagespeed EnableFilters sprite_images;
+        pagespeed EnableFilters rewrite_images;
+        pagespeed EnableFilters rewrite_css;
+        pagespeed EnableFilters rewrite_style_attributes_with_url;
+        pagespeed EnableFilters rewrite_javascript;
+        pagespeed EnableFilters flatten_css_imports;
+        pagespeed EnableFilters combine_javascript;
+        pagespeed EnableFilters combine_css;
+        pagespeed EnableFilters recompress_png;
+        pagespeed EnableFilters convert_png_to_jpeg,convert_jpeg_to_webp;
+        pagespeed EnableFilters collapse_whitespace,remove_comments;
+        pagespeed EnableFilters canonicalize_javascript_libraries;
+        pagespeed EnableFilters extend_cache;
+        pagespeed EnableFilters local_storage_cache;
+        pagespeed EnableFilters outline_css;
+        pagespeed EnableFilters outline_javascript;
+#        pagespeed EnableFilters move_css_above_scripts;
+        pagespeed EnableFilters rewrite_domains;
+        pagespeed EnableFilters resize_mobile_images;
+        pagespeed EnableFilters lazyload_images;
+        pagespeed EnableFilters responsive_images,resize_images;
+        pagespeed EnableFilters move_css_to_head;
+        pagespeed EnableFilters insert_ga;
+        pagespeed AnalyticsID UA-91618862-4;
+        pagespeed EnableFilters make_show_ads_async;
+        pagespeed EnableFilters make_google_analytics_async;
+
+        #Headers
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header X-Powered-By TheRaw;
+        add_header X-Xss-Protection "1; mode=block";
+        add_header X-Server Alpha;
+        add_header Content-Security-Policy "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload;";
+        add_header Referrer-Policy "no-referrer-when-downgrade";
+
+        ssl    on;
+        ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+        ssl_prefer_server_ciphers on;
+        #ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
+        ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+        ssl_certificate        /hostdata/dopeinfinity.io/ssl/bundle.crt;
+        ssl_certificate_key    /hostdata/dopeinfinity.io/ssl/priv.key;
+        ssl_dhparam            /hostdata/dopeinfinity.io/ssl/dhparams.pem;
+        ssl_session_cache shared:SSL:50m;
+        ssl_session_timeout 5m;
 
 
         location / {
-            # Rules.
-            if ($http_user_agent = "") { return 403; }
-            limit_conn          limited 5;
-            # END Rules.
-            access_log          /hostdata/dopeinfinity.io/logs/access.log upstream_time;
-            error_log           /hostdata/dopeinfinity.io/logs/error.log;
-            if ($scan = 1) {
-               return 444;
-            }
-            if ($outdated = 1) {
-               return 444;
-            }
+          access_log /hostdata/dopeinfinity.io/logs/access.log upstream_time;
+          error_log  /hostdata/dopeinfinity.io/logs/error.log;
+          resolver            8.8.8.8;
+          if ($http_user_agent = "") { return 403; }
+          try_files $uri $uri/ $uri.html $uri.php$is_args$query_string;
         }
-        
-        # STATS
-        location /status {
-            vhost_traffic_status_display;
-            vhost_traffic_status_display_format html;
-        }
-        # END STATS
-        
-        # AV.
-        location /gen {
-            avatars_gen;
-            avatars_gen_size 300;
-            avatars_gen_font_size 100;
-            avatars_gen_font_face "Liberation Sans Narrow";
-            avatars_gen_font_bold on;
-        }
-        #END AV.
+
+        location ~ \.php {
+          if ($request_uri ~ ^/([^?]*)\.php($|\?)) {  return 302 /$1?$args;  }
+          #try_files $uri /index.php =404;
+          try_files $uri =404;
+          fastcgi_pass 127.0.0.1:9000;
+          fastcgi_index index.php;
+          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          include fastcgi_params;
+         }
 }
