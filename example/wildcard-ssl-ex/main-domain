@@ -2,7 +2,7 @@ server {
         listen 80;
         server_name systemroot.me www.systemroot.me;
 
-        #SPEED
+        #GSPEED
         pagespeed on;
         pagespeed EnableFilters insert_dns_prefetch;
         pagespeed EnableFilters collapse_whitespace,remove_comments;
@@ -66,7 +66,7 @@ server {
         listen   443;
         server_name systemroot.me www.systemroot.me;
 
-        #SPEED
+        #GSPEED
         pagespeed on;
         pagespeed EnableFilters insert_dns_prefetch;
         pagespeed EnableFilters collapse_whitespace,remove_comments;
