@@ -1,0 +1,144 @@
+server {
+        listen 80;
+        server_name systemroot.me www.systemroot.me;
+
+        #SPEED
+        pagespeed on;
+        pagespeed EnableFilters insert_dns_prefetch;
+        pagespeed EnableFilters collapse_whitespace,remove_comments;
+
+        #Images
+        pagespeed EnableFilters sprite_images;
+        pagespeed EnableFilters rewrite_images;
+        pagespeed EnableFilters recompress_png;      
+        pagespeed EnableFilters convert_png_to_jpeg,convert_jpeg_to_webp;
+        pagespeed EnableFilters resize_mobile_images;
+        pagespeed EnableFilters lazyload_images;
+        pagespeed EnableFilters responsive_images,resize_images;
+
+        #CSS
+        pagespeed EnableFilters rewrite_css;
+        pagespeed EnableFilters combine_css;
+        
+
+        #JS
+        pagespeed EnableFilters rewrite_javascript;
+        #pagespeed EnableFilters canonicalize_javascript_libraries;
+        pagespeed EnableFilters extend_cache;
+        #pagespeed EnableFilters combine_javascript;
+        
+
+        #G
+        pagespeed EnableFilters insert_ga;
+        pagespeed AnalyticsID   UA-XOXO-1;
+ 
+        location / {
+          return https://$server_name$request_uri;
+
+          access_log /hostdata/systemroot.me/logs/access.log upstream_time;
+          error_log  /hostdata/systemroot.me/logs/error.log;
+        }
+
+        error_page 403 /custom_403.html;
+        location = /custom_403.html {
+          return http://$server_name;
+        }
+
+        error_page 404 /custom_404.html;
+        location = /custom_404.html {
+          return http://$server_name;
+        }
+
+        #Headers
+        #add_header X-Frame-Options "SAMEORIGIN" always;
+        #add_header X-Content-Type-Options "nosniff" always;
+        #add_header X-Xss-Protection "1; mode=block";
+        #add_header X-Powered-By TheRaw;
+        #add_header X-Server Alpha;
+        #add_header Content-Security-Policy "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com";
+        #add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload;";
+        #add_header Referrer-Policy "no-referrer-when-downgrade";
+        #add_header X-Cache-Status $upstream_cache_status;
+
+}
+
+server {
+        listen   443;
+        server_name systemroot.me www.systemroot.me;
+
+        #SPEED
+        pagespeed on;
+        pagespeed EnableFilters insert_dns_prefetch;
+        pagespeed EnableFilters collapse_whitespace,remove_comments;
+
+        #Images
+        pagespeed EnableFilters sprite_images;
+        pagespeed EnableFilters rewrite_images;
+        pagespeed EnableFilters recompress_png;      
+        pagespeed EnableFilters convert_png_to_jpeg,convert_jpeg_to_webp;
+        pagespeed EnableFilters resize_mobile_images;
+        pagespeed EnableFilters lazyload_images;
+        pagespeed EnableFilters responsive_images,resize_images;
+
+        #CSS
+        pagespeed EnableFilters rewrite_css;
+        pagespeed EnableFilters combine_css;
+        
+
+        #JS
+        pagespeed EnableFilters rewrite_javascript;
+        #pagespeed EnableFilters canonicalize_javascript_libraries;
+        pagespeed EnableFilters extend_cache;
+        #pagespeed EnableFilters combine_javascript;
+        
+
+        #G
+        pagespeed EnableFilters insert_ga;
+        pagespeed AnalyticsID   UA-XOXO-1;
+
+        #Headers
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header X-Content-Type-Options "nosniff" always;
+        #add_header X-Xss-Protection "1; mode=block";
+        add_header X-Powered-By TheRaw;
+        add_header X-Server Alpha;
+        add_header Content-Security-Policy "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload;";
+        add_header Referrer-Policy "no-referrer-when-downgrade";
+        pagespeed AddResourceHeader "Access-Control-Allow-Origin" "https://systemroot.me/";
+
+        ssl                       on;
+        ssl_protocols             TLSv1.2 TLSv1.1 TLSv1;
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers               'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+        ssl_certificate           /hostdata/systemroot.me/ssl/bundle.crt;
+        ssl_certificate_key       /hostdata/systemroot.me/ssl/syskey.key;
+        ssl_dhparam               /hostdata/systemroot.me/ssl/dhparam.pem;
+        ssl_session_cache         shared:SSL:5m;
+        ssl_session_timeout       5m;
+
+
+        location / {
+          resolver            8.8.8.8;
+          if ($http_user_agent = "") { return 444; }
+          
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_pass http://ghost;
+
+          access_log /hostdata/systemroot.me/logs/access.log upstream_time;
+          error_log  /hostdata/systemroot.me/logs/error.log;
+        }
+
+        error_page 403 /custom_403.html;
+        location = /custom_403.html {
+          return http://$server_name;
+        }
+
+        error_page 404 /custom_404.html;
+        location = /custom_404.html {
+          return http://$server_name;
+        }
+
+}
