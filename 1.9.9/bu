@@ -37,9 +37,4 @@
 --add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
 --add-module=/opt/nginx/modules/nginx-http-rdns \
 --add-module=/opt/nginx/modules/lua-nginx-module \
---add-module=/opt/nginx/modules/nginx-rtmp-module \
---add-module=/opt/nginx/modules/ngx_http_subrange_module \
---add-module=/opt/nginx/modules/encrypted-session-nginx-module \
---add-module=/opt/nginx/modules/nginx_ipset_blacklist \
---add-module=/opt/nginx/modules/nginx-auth-ldap \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
