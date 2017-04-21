@@ -41,13 +41,6 @@ Tutorial : http://systemroot.me/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
  https://github.com/dizballanze/ngx_http_avatars_gen_module.git
  https://github.com/openresty/lua-nginx-module.git
  https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
- 
- #ADDED ON 1.9.9 installation
- https://github.com/arut/nginx-rtmp-module.git
- https://github.com/kvspb/nginx-auth-ldap.git
- https://github.com/Vasfed/nginx_ipset_blacklist.git
- https://github.com/openresty/encrypted-session-nginx-module.git
- https://github.com/Qihoo360/ngx_http_subrange_module.git
 ```
 
 # Library
