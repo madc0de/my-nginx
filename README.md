@@ -40,6 +40,7 @@ Tutorial : http://systemroot.me/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
  https://github.com/flant/nginx-http-rdns.git
  https://github.com/dizballanze/ngx_http_avatars_gen_module.git
  https://github.com/openresty/lua-nginx-module.git
+ https://github.com/arut/nginx-rtmp-module.git
  https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
 ```
 
