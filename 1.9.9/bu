@@ -38,4 +38,6 @@
 --add-module=/opt/nginx/modules/nginx-http-rdns \
 --add-module=/opt/nginx/modules/lua-nginx-module \
 --add-module=/opt/nginx/modules/nginx-rtmp-module \
+--add-module=/opt/nginx/modules/nginx-mtask-module \
+--add-module=/opt/nginx/modules/nginx-mysql-module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
