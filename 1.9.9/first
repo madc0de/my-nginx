@@ -63,6 +63,8 @@ git clone https://github.com/flant/nginx-http-rdns.git
 git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
 git clone https://github.com/openresty/lua-nginx-module.git
 git clone https://github.com/arut/nginx-rtmp-module.git
+git clone https://github.com/arut/nginx-mtask-module.git
+git clone https://github.com/arut/nginx-mysql-module.git
 wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
 unzip v1.12.34.2-beta.zip
 rm -Rf v1.12.34.2-beta.zip
