@@ -63,12 +63,8 @@ git clone https://github.com/flant/nginx-http-rdns.git
 git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
 git clone https://github.com/openresty/lua-nginx-module.git
 git clone https://github.com/arut/nginx-rtmp-module.git
-git clone https://github.com/arut/nginx-mtask-module.git
-git clone https://github.com/arut/nginx-mysql-module.git
 git clone https://github.com/kvspb/nginx-auth-ldap.git
 git clone https://github.com/Vasfed/nginx_ipset_blacklist.git
-git clone https://github.com/replay/ngx_http_php_session.git
-git clone https://github.com/yaoweibin/nginx_tcp_proxy_module.git
 git clone https://github.com/openresty/encrypted-session-nginx-module.git
 git clone https://github.com/Qihoo360/ngx_http_subrange_module.git
 wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
