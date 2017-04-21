@@ -47,7 +47,6 @@ Tutorial : http://systemroot.me/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
  https://github.com/arut/nginx-rtmp-module.git
  https://github.com/kvspb/nginx-auth-ldap.git
  https://github.com/Vasfed/nginx_ipset_blacklist.git
- https://github.com/replay/ngx_http_php_session.git
  https://github.com/yaoweibin/nginx_tcp_proxy_module.git
  https://github.com/openresty/encrypted-session-nginx-module.git
  https://github.com/Qihoo360/ngx_http_subrange_module.git
