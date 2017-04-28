@@ -1,5 +1,8 @@
 #!/bin/bash
-#After.
+# Load Config.
+. /tmp/config
+
+
 useradd -r nginx
 rm -Rf /etc/init.d/nginx
 cd /etc/init.d/
@@ -17,5 +20,14 @@ mkdir -p /hostdata/default
 cd /hostdata/default
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/stream/index.html
 
+mkdir -p /hostdata/stream/mp4
+cd /hostdata/stream/mp4/; wget https://github.com/systemroot/my-nginx/raw/master/stream/vid1.mp4
+mkdir -p /hostdata/stream/flv
+mkdir -p /hostdata/stream/public_html
+cp /opt/nginx/modules/nginx-rtmp-module/stat.xsl /hostdata/stream/public_html/
+cd /nginx/sites/; wget 
 clear
 echo "If You execute 'service nginx start' you should see nginx default page."
+echo "Then try your VOD2"
+ip=$(curl api.ipify.org)
+echo "play rtmp://$ip:1935/vod2/vid1.mp4"
