@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export NGINX_DIR=/etc/nginx/
+export NGINX_USER=www-data
+export NGINX_IP=69.0.0.0
+export NGINX_PORT=888
+export NGINX_CORES=auto
+export NGINX_VID_DIR=/stream/videos/mp4/
+export NGINX_VID_DIR_FLV=
+export NGINX_STREAM_PORT=1935
+export NGINX_RTMP_STATS_PORT=8080
+export INSTALLING_MEDIA=YES
