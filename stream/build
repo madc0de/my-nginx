@@ -37,4 +37,5 @@
 --add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
 --add-module=/opt/nginx/modules/nginx-http-rdns \
 --add-module=/opt/nginx/modules/lua-nginx-module \
---add-module=/opt/nginx/modules/nginx-upload-progress-module
+--add-module=/opt/nginx/modules/nginx-upload-progress-module \
+--add-module=/opt/nginx/modules/nginx-rtmp-module
