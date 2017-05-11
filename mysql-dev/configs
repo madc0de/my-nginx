@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# ================================================================
+# You can chose to install mysql manually or let us to install it.
+# Wrote 'yes' or 'no'
+# if you chose 'no' you should install mysql-server and 'mysql_config'
+# ================================================================
+export mysql_install=yes
+# ================================================================
+export work_dir=/opt/nginx/
+# ================================================================
+# ================================================================
