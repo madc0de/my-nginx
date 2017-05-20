@@ -36,7 +36,7 @@ Tutorial Part 2 Install php5.6-fpm => : https://systemroot.me/install-and-config
 # Nginx Version
 
 ```
-1.9.7 http://nginx.org/download/nginx-1.9.9.tar.gz
+1.9.9 http://nginx.org/download/nginx-1.9.9.tar.gz
 ```
 # Info
 
