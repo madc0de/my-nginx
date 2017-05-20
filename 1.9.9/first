@@ -2,7 +2,42 @@
 # Nginx 1.9.9 + * Modules.
 # Author RAW. // systemroot.me
 ##########################
+# ==============================================
+# Check..
+# ==============================================
+if [ "$(whoami)" != "root" ]
+then
+    echo "You should Login as root to use this script!";
+    echo "May you already have access for sudo, but commands aren't designed with sudo! so..";
+    echo "sudo -i";
+    exit 1
+fi
 
+if [ -d "/nginx/sites" ]; then
+    echo "We've detect a folder '/nginx/sites' which means"
+    echo "Maybe you have use this script before!"
+    echo "All what you can do now is to remove '/nginx/' dir manually!"
+    exit 1
+fi
+
+if [ -d "/etc/nginx" ]; then
+    echo "We've detect a folder '/etc/nginx' which means"
+    echo "Maybe you have use this script before!"
+    echo "All what you can do now is to remove '/etc/nginx/' dir manually!"
+    exit 1
+fi
+
+if [ -d "/opt/nginx/" ]; then
+    echo "We've detect a folder '/opt/nginx/' which means"
+    echo "Maybe you have use this script before!"
+    echo "All what you can do now is to remove '/opt/nginx/' dir manually!"
+    echo "And if you've install nginx please use =>"
+    echo "apt-get update; apt-get upgrade; apt-get dist-upgrade"
+    echo "apt-get purge nginx; apt-get autoremove"
+    exit 1
+fi
+# ==============================================
+# ==============================================
 #Before.
 apt-get update -y
 apt-get upgrade -y
@@ -26,6 +61,8 @@ apt-get install -y software-properties-common
 apt-get install -y python-software-properties
 apt-get install -y libcairo2 libcairo2-dev
 apt-get install -y python-dev
+apt-get install libmysqlclient-dev -y
+apt-get install libmariadbclient-dev -y
 sudo add-apt-repository ppa:maxmind/ppa -y
 apt-get install aptitude -y
 aptitude update -y
@@ -62,6 +99,9 @@ git clone https://github.com/leev/ngx_http_geoip2_module.git
 git clone https://github.com/flant/nginx-http-rdns.git
 git clone https://github.com/dizballanze/ngx_http_avatars_gen_module.git
 git clone https://github.com/openresty/lua-nginx-module.git
+git clone https://github.com/arut/nginx-mtask-module.git
+git clone https://github.com/arut/nginx-mysql-module.git
+git clone  https://github.com/SpiderLabs/ModSecurity-nginx.git
 #git clone https://github.com/arut/nginx-rtmp-module.git
 #git clone https://github.com/kvspb/nginx-auth-ldap.git
 #git clone https://github.com/Vasfed/nginx_ipset_blacklist.git
