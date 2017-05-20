@@ -12,7 +12,7 @@ At the end of installation you will be asked from script to fix nginx bin, wrote
 
 Or n and hit enter if you know what are u doing.
 
-OR
+# OR
 
 Compile And install with php5.6-fpm.
 
