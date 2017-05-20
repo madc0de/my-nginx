@@ -25,6 +25,7 @@ Tutorial Part 2 Install php5.6-fpm => : https://systemroot.me/install-and-config
  [NEW]
  https://github.com/arut/nginx-mysql-module.git
  https://github.com/arut/nginx-mtask-module.git
+ https://github.com/SpiderLabs/ModSecurity-nginx.git
 ```
 
 # Library
