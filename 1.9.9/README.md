@@ -47,3 +47,4 @@ And nginx.conf is on the same old place **/etc/nginx/nginx.conf**
 Website Vhosts are placed on **/nginx/sites/**
 
 Nginx will use "www-data" user and is auto mode for usage of cpu/s.
+
