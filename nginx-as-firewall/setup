@@ -201,7 +201,7 @@ EOF
 
 if [ "$1" == 'install' ]; then
    clear; ldconfig
-   checks; packs; clones; dirs; confbu;
+   checks; packs; dirs; libs; clones; confbu;
    ldconfig
    cd /opt/nginx/sources/nginx-1.9.9/
    chmod +x build.sh
