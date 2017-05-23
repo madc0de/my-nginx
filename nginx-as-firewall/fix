@@ -11,7 +11,7 @@ rm -Rf nginx.conf*
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx-as-firewall/static/nginx.conf
 mkdir -p /nginx/live/
 cd /nginx/live/
-wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx/sites/default
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx-as-firewall/static/default
 
 mkdir -p /hostdata/default
 mkdir -p /hostdata/default/public_html
