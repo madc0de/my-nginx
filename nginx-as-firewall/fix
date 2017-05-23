@@ -1,0 +1,45 @@
+#!/bin/bash
+
+useradd -r nginx
+rm -Rf /etc/init.d/nginx
+cd /etc/init.d/
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/init.d/nginx
+chmod +x nginx
+mkdir -p /etc/nginx/
+cd /etc/nginx/
+mkdir conf.d
+rm -Rf nginx.conf*
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/etc/nginx/nginx.conf
+mkdir -p /nginx/sites/
+cd /nginx/sites/
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx/sites/default
+mkdir -p /usr/share/nginx/html
+mkdir -p /hostdata/default
+cd /hostdata/default
+wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/default/index.html
+
+clear
+echo "||================================================||"
+echo "||================================================||"
+echo "||============= Nginx |=> FIXED 100% =============||"
+echo "||------------------------------------------------||"
+echo "||============= PATH  |=> /nginx/ ================||"
+echo "||------------------------------------------------||"
+echo "||============= CONF  |=> /nginx/nginx.conf ======||"
+echo "||------------------------------------------------||"
+echo "||============= VHOST |=> /nginx/live/ ===========||"
+echo "||================================================||"
+echo "||================================================||"
+echo "||------------------------------------------------||"
+echo "||================================================||"
+echo "||================================================||"
+echo "||============= CHECK |=> nginx -t ===============||"
+echo "||------------------------------------------------||"
+echo "||============= START |=> service nginx start ====||"
+echo "||------------------------------------------------||"
+echo "||============= STOP  |=> service nginx stop =====||"
+echo "||------------------------------------------------||"
+echo "||=========== RESTART |=> service nginx restart ==||"
+echo "||------------------------------------------------||"
+echo "||================================================||"
+echo "||================================================||"
