@@ -80,9 +80,6 @@ packs() {
 #Dirs!
 dirs() {
            mkdir -p /nginx
-           mkdir -p /nginx/live/
-           mkdir -p /nginx/logs/
-           mkdir -p /nginx/cache/
            mkdir -p /hostdata/
            mkdir -p /var/log/nginx/
            mkdir -p /opt/nginx/modules/
@@ -222,4 +219,9 @@ if [ "$1" == 'install' ]; then
    make -j`nproc`
    make install
    ldconfig
+   mkdir -p /nginx
+   mkdir -p /nginx/live
+   mkdir -p /nginx/logs
+   mkdir -p /nginx/cache
+   mkdir -p /nginx/conf.d
 fi
