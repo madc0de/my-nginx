@@ -84,16 +84,17 @@ dirs() {
            mkdir -p /nginx/cache/
            mkdir -p /hostdata/
            mkdir -p /var/log/nginx/
+           mkdir -p /opt/nginx/modules/
 }
 
 #Modules.
 libs() {
-           mkdir -p /opt/nginx/modules/
            cd /opt/nginx/modules/
            git clone https://github.com/ildus/nginx_redis.git
            cd nginx_redis/
            mv ngx_devel_kit-0.2.19/ /opt/nginx/modules/
            
+           cd /opt/nginx/modules/
            wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
            unzip v1.12.34.2-beta.zip
            rm -Rf v1.12.34.2-beta.zip
