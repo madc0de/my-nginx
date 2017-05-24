@@ -73,6 +73,7 @@ packs() {
            aptitude install libmaxminddb0 libmaxminddb-dev mmdb-bin -y
            apt-get install libmysqlclient-dev -y
            apt-get install libmariadbclient-dev -y
+           apt-get install g++ flex bison curl doxygen libyajl-dev libgeoip-dev libtool dh-autoreconf libcurl4-gnutls-dev libxml2 libpcre++-dev libxml2-dev -y
 }
 
 
@@ -89,6 +90,17 @@ dirs() {
 
 #Modules.
 libs() {
+           cd /opt/
+           git clone https://github.com/SpiderLabs/ModSecurity
+           cd /opt/ModSecurity/
+           git checkout -b v3/master origin/v3/master
+           sh build.sh
+           git submodule init
+           git submodule update
+           ./configure
+           make -j`nproc`
+           make install
+           
            cd /opt/nginx/modules/
            git clone https://github.com/ildus/nginx_redis.git
            cd nginx_redis/
@@ -153,7 +165,6 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.9/build.sh
 ./configure \
 --user=nginx \
 --group=nginx \
---builddir=/nginx/ \
 --sbin-path=/usr/sbin/nginx           \
 --conf-path=/nginx/nginx.conf     \
 --pid-path=/var/run/nginx.pid         \
@@ -172,7 +183,6 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.9/build.sh
 --with-http_stub_status_module \
 --with-http_realip_module \
 --with-stream \
---with-debug \
 --with-stream_ssl_module \
 --with-threads \
 --with-http_dav_module \
