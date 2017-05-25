@@ -145,7 +145,7 @@ clones(){
            git clone https://github.com/arut/nginx-mysql-module.git
            git clone https://github.com/SpiderLabs/ModSecurity-nginx.git
            # Something is wrong with ipset! don't use it if you don't know how to fix.
-           # Error is then page takes forever on "loading..."
+           # Error is that page takes forever on "loading..."
            # git clone https://github.com/Vasfed/nginx_ipset_blacklist.git
            git clone https://github.com/openresty/encrypted-session-nginx-module.git
            git clone https://github.com/Qihoo360/ngx_http_subrange_module.git
