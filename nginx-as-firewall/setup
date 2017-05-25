@@ -166,8 +166,8 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.9/build.sh
 --conf-path=/nginx/nginx.conf     \
 --pid-path=/var/run/nginx.pid         \
 --lock-path=/var/run/nginx.lock       \
---error-log-path=/var/log/nginx/error.log \
---http-log-path=/var/log/nginx/access.log \
+--error-log-path=/nginx/logs/error.log \
+--http-log-path=/nginx/logs/access.log \
 --with-pcre                           \
 --with-http_geoip_module \
 --with-http_gunzip_module \
