@@ -144,7 +144,9 @@ clones(){
            git clone https://github.com/arut/nginx-mtask-module.git
            git clone https://github.com/arut/nginx-mysql-module.git
            git clone https://github.com/SpiderLabs/ModSecurity-nginx.git
-           git clone https://github.com/Vasfed/nginx_ipset_blacklist.git
+           # Something is wrong with ipset! don't use it if you don't know how to fix.
+           # Error is then page takes forever on "loading..."
+           # git clone https://github.com/Vasfed/nginx_ipset_blacklist.git
            git clone https://github.com/openresty/encrypted-session-nginx-module.git
            git clone https://github.com/Qihoo360/ngx_http_subrange_module.git
            #END-NEW
@@ -201,7 +203,6 @@ cat <<EOF > /opt/nginx/sources/nginx-1.9.9/build.sh
 --add-module=/opt/nginx/modules/nginx-mtask-module \
 --add-module=/opt/nginx/modules/nginx-mysql-module \
 --add-module=/opt/nginx/modules/ModSecurity-nginx \
---add-module=/opt/nginx/modules/nginx_ipset_blacklist \
 --add-module=/opt/nginx/modules/encrypted-session-nginx-module \
 --add-module=/opt/nginx/modules/ngx_http_subrange_module \
 --add-module=/opt/nginx/modules/nginx-upload-progress-module
@@ -209,9 +210,44 @@ EOF
 }
 
 
+
+# ============================================================================== #
+# CLEAN.
+# ============================================================================== #
+RMD() {
+        rm -Rf /opt/nginx
+        rm -Rf /nginx
+        rm -Rf /hostdata
+        rm -Rf /tmp/*
+        rm -Rf /etc/nginx
+        rm -Rf /etc/init.d/nginx
+        rm -Rf /usr/sbin/nginx
+}
+# ============================================================================== #
+# END-CLEAN.
+# ============================================================================== #
+
+# ============================================================================== #
+# FIX.
+# ============================================================================== #
+FIX0() {
+        cd /tmp/
+        wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx-as-firewall/pre-fix
+        wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx-as-firewall/fix
+        chmod +x /tmp/pre-fix
+        chmod +x /tmp/fix
+        sh /tmp/pre-fix
+        sh /tmp/fix
+        rm -Rf /tmp/*
+        
+}
+# ============================================================================== #
+# END-FIX.
+# ============================================================================== #
+
 if [ "$1" == 'install' ]; then
    clear; ldconfig
-   checks; packs; dirs; libs; clones; confbu;
+   checks; packs; dirs; clones; libs; confbu;
    ldconfig
    cd /opt/nginx/sources/nginx-1.9.9/
    chmod +x build.sh
@@ -225,3 +261,14 @@ if [ "$1" == 'install' ]; then
    mkdir -p /nginx/cache
    mkdir -p /nginx/conf.d
 fi
+
+if [ "$1" == 'clean' ]; then
+   RMD;
+   clear
+   echo "We've remove everything which was installed via './setup install'"
+fi
+
+if [ "$1" == 'fix' ]; then
+   FIX0;
+fi
+
