@@ -17,24 +17,22 @@ checks() {
            if [ -d "/nginx/sites" ]; then
                echo "We've detect a folder '/nginx/sites' which means"
                echo "Maybe you have use this script before!"
-               echo "All what you can do now is to remove '/nginx/' dir manually!"
+               echo "You can fix this by executing!"
+               echo "./setup clean"
                exit 1
            fi
 
            if [ -d "/etc/nginx" ]; then
                echo "We've detect a folder '/etc/nginx' which means"
                echo "Maybe you have use this script before!"
-               echo "All what you can do now is to remove '/etc/nginx/' dir manually!"
+               echo "./setup clean"
                exit 1
            fi
 
            if [ -d "/opt/nginx/" ]; then
                echo "We've detect a folder '/opt/nginx/' which means"
                echo "Maybe you have use this script before!"
-               echo "All what you can do now is to remove '/opt/nginx/' dir manually!"
-               echo "And if you've install nginx please use =>"
-               echo "apt-get update; apt-get upgrade; apt-get dist-upgrade"
-               echo "apt-get purge nginx; apt-get autoremove"
+               echo "./setup clean"
                exit 1
            fi
 }
@@ -222,6 +220,7 @@ RMD() {
         rm -Rf /etc/nginx
         rm -Rf /etc/init.d/nginx
         rm -Rf /usr/sbin/nginx
+        rm -Rf /bin/nginx
 }
 # ============================================================================== #
 # END-CLEAN.
@@ -255,17 +254,17 @@ if [ "$1" == 'install' ]; then
    make -j`nproc`
    make install
    ldconfig
-   mkdir -p /nginx
-   mkdir -p /nginx/live
-   mkdir -p /nginx/logs
-   mkdir -p /nginx/cache
-   mkdir -p /nginx/conf.d
+   clear
+   echo "Installation Done!"
+   echo "Please execute ./setup fix"
+   echo "So we can fix nginx bin, dirs, and other stuff"
 fi
 
 if [ "$1" == 'clean' ]; then
    RMD;
    clear
    echo "We've remove everything which was installed via './setup install'"
+   echo "You can now retry ./setup install"
 fi
 
 if [ "$1" == 'fix' ]; then
