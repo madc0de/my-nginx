@@ -215,7 +215,7 @@ EOF
 RMD() {
         rm -Rf /opt/nginx
         rm -Rf /nginx
-        rm -Rf /hostdata
+        rm -Rf /hostdata/default
         rm -Rf /tmp/*
         rm -Rf /etc/nginx
         rm -Rf /etc/init.d/nginx
