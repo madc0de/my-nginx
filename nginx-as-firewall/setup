@@ -244,6 +244,21 @@ FIX0() {
 # END-FIX.
 # ============================================================================== #
 
+# ============================================================================== #
+# FIX.
+# ============================================================================== #
+IPHP() {
+        cd /tmp/
+        wget https://raw.githubusercontent.com/systemroot/my-nginx/master/nginx-as-firewall/php
+        chmod +x /tmp/php
+        sh /tmp/php
+        rm -Rf /tmp/*
+        
+}
+# ============================================================================== #
+# END-FIX.
+# ============================================================================== #
+
 if [ "$1" == 'install' ]; then
    clear; ldconfig
    checks; packs; dirs; clones; libs; confbu;
@@ -269,5 +284,13 @@ fi
 
 if [ "$1" == 'fix' ]; then
    FIX0;
+fi
+
+if [ "$1" == 'iphp' ]; then
+   IPHP;
+   clear
+   service nginx restart
+   clear
+   echo "Installation Of Php is Done."
 fi
 
