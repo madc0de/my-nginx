@@ -1,7 +1,7 @@
 ## Compile Nginx 1.9.9 From Source On Ubuntu 14.04
 
-Tutorial Part 1 Compile Nginx and modules => : https://systemroot.me/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
-Tutorial Part 2 Install php5.6-fpm => : https://systemroot.me/install-and-configure-php5-6-fpm-with-nginx-1-9-9-2/
+Tutorial Part 1 Compile Nginx and modules => : https://systemroot.co/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
+Tutorial Part 2 Install php5.6-fpm => : https://systemroot.co/install-and-configure-php5-6-fpm-with-nginx-1-9-9-2/
 
 
 # Modules
