@@ -22,7 +22,7 @@ Compile And install with php5.6-fpm.
 
 # [NEW] Compile Nginx 1.9.9
 
-Tutorial : http://systemroot.me/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
+Tutorial : http://systemroot.co/compile-nginx-1-9-9-from-source-on-ubuntu-14-04/
 
 # Modules
 
