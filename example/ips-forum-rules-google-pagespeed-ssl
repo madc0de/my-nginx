@@ -26,7 +26,6 @@ server {
         pagespeed EnableFilters convert_png_to_jpeg,convert_jpeg_to_webp;
         pagespeed EnableFilters collapse_whitespace,remove_comments;
       
-
         #Headers
         add_header X-Frame-Options "SAMEORIGIN" always; 
         add_header X-Content-Type-Options "nosniff" always;
