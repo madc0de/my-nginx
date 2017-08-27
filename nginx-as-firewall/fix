@@ -18,8 +18,8 @@ mkdir -p /hostdata/default/public_html
 mkdir -p /hostdata/default/logs
 mkdir -p /hostdata/default/cache
 cd /hostdata/default/public_html/
-
 wget https://raw.githubusercontent.com/systemroot/my-nginx/master/hostdata/default/index.html
+sudo update-rc.d nginx defaults
 
 clear
 echo "||================================================||"
