@@ -26,7 +26,7 @@ Next steps? Follow outputs. you will end up with nginx + php5.6 installed.
 
 # cCheck it out on docker..
 
-*(exposed ports needed `22` & `80`)*
+*(ports needed `22` & `80`)*
 
 **`docker pull theraw/naf`**
 
