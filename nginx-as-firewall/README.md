@@ -26,6 +26,8 @@ Next steps? Follow outputs. you will end up with nginx + php5.6 installed.
 
 # cCheck it out on docker..
 
+Already installed Nginx 1.9.9, PHP FPM 5.6 And modules..
+
 *(ports needed `22` & `80`)*
 
 **`docker pull theraw/naf`**
