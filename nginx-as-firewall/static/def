@@ -27,7 +27,7 @@ server {
         # =========================================
         # PHPMYADMIN.
         # =========================================
-        location /mysql {
+        location /phpmyadmin {
            root /hostdata/default/;
            location ~ ^/phpmyadmin/(.+\.php)$ {
              try_files $uri =404;
