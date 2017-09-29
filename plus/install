@@ -1,0 +1,6 @@
+#!/bin/bash
+useradd www-data
+apt-get install git -y
+git clone who
+unzip who
+service nginx start
