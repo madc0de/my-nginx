@@ -13,7 +13,7 @@ unzip v1.12.34.3-stable.zip; rm -Rf v1.12.34.3-stable.zip
 # ======================================================================
 # PAGESPEED LIBRARY.
 # ======================================================================
-cd /opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta
+cd /opt/nginx/modules/ngx_pagespeed-1.12.34.3-stable
 wget https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
 tar -xzvf 1.12.34.2-x64.tar.gz; rm -Rf 1.12.34.2-x64.tar.gz
 # ======================================================================
@@ -61,6 +61,7 @@ cat <<EOF > /opt/nginx/sources/nginx-1.13.4/build.sh
 --add-dynamic-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
 --add-dynamic-module=/opt/nginx/modules/nginx-mtask-module \
 --add-dynamic-module=/opt/nginx/modules/nginx-mysql-module \
+--add-dynamic-module=/opt/nginx/modules/ngx_pagespeed-1.12.34.3-stable \
 --add-dynamic-module=/opt/nginx/modules/encrypted-session-nginx-module
 EOF
 # ======================================================================
