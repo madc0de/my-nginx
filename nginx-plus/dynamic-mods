@@ -1,0 +1,29 @@
+#!/bin/bash
+
+rm -Rf /opt/nginx/modules/
+mkdir -p /opt/nginx/modules/
+cd /opt/nginx/modules/
+wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
+unzip v1.12.34.2-beta.zip
+rm -Rf v1.12.34.2-beta.zip
+
+#Pagespeed Library
+cd /opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta
+wget https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
+tar -xzvf 1.12.34.2-x64.tar.gz
+
+#LuaJIT Library
+cd /opt/nginx/modules/
+git clone http://luajit.org/git/luajit-2.0.git
+cd luajit-2.0/
+make -j`nproc`
+sudo make install
+ldconfig
+
+
+# Download Nginx 1.9.9
+mkdir -p /opt/nginx/sources/
+cd /opt/nginx/sources/
+wget 'http://nginx.org/download/nginx-1.11.5.tar.gz'
+tar -xzvf nginx-1.11.5.tar.gz
+rm -Rf nginx-1.11.5.tar.gz
