@@ -11,6 +11,7 @@ login with no password and executing commands
   Your SSH Public key is at ```/root/.ssh/id_rsa.pub```
   
 2. Add your public ssh key to remote host,
+
   ```cat /root/.ssh/id_rsa.pub | ssh user@remoteServer 'cat >> .ssh/authorized_keys'```
   
 3. Now do a test with nginx
