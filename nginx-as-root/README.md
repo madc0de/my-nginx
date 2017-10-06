@@ -3,7 +3,7 @@
 Building a webapp which needs root access in servers? This is the best way to go. 
 Here is no needed doing alot of stuff to get right permissons to execute your commands.
 You can run nginx as root and you will have full asccess as you've login in ssh!
-If want to execute remote commands in other servers then you can just add your ssh key into ther servers and so you can 
+If want to execute remote commands in other servers then you can just add your ssh key public key and so you can 
 login with no password and executing commands
 
 1. Generate a public key where nginx is installed. 
