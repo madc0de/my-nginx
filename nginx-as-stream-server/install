@@ -43,14 +43,51 @@ DIRS() {
          
          # WORKDIRS.
          mkdir -p /opt/nginx/modules/
-         mkdir -p /opt/nginx/source/
+         mkdir -p /opt/nginx/sources/
+         mkdir -p /opt/nginx/xvideo/
+}
+
+FFMPEG() {
+         apt-get update; apt-get upgrade -y
+         apt-get dist-upgrade -y; apt-get autoremove -y
+         apt-get install build-essential libssl-dev curl libssl-dev openssl git curl nano zip unzip -y
+         apt-get install cmake-curses-gui -y
+         apt-get remove ffmpeg x264 libav-tools libvpx-dev libx264-dev -y
+         apt-get autoremove -y; apt-get update
+         apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev \
+           libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+           librtmp-dev libsdl1.2-dev libtheora-dev libva-dev libvdpau-dev libvorbis-dev \
+           libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+         apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev \
+           libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libtheora-dev \
+           libvorbis-dev pkg-config texi2html yasm zlib1g-dev
+         apt-get update; apt-get autoremove -y; apt-get update
+         cd /opt/nginx/xvideo/
+         git clone http://git.videolan.org/git/x264.git
+         cd x264/
+         ./configure --enable-shared --enable-static
+         make -j`nproc`
+         checkinstall --pkgname=x264 --pkgversion="3:$(./version.sh | \
+           awk -F'[" ]' '/POINT/{print $4"+git"$5}')" --backup=no --deldoc=yes \
+           --fstrans=no --default
+         cd /opt/nginx/xvideo/
+         wget http://downloads.sourceforge.net/opencore-amr/fdk-aac-0.1.5.tar.gz
+         tar xzvf fdk-aac-0.1.5.tar.gz; rm -Rf fdk-aac-0.1.5.tar.gz; cd fdk-aac-0.1.5/
+         ./configure
+         make -j`nproc`
+         sudo checkinstall --pkgname=fdk-aac --pkgversion="0.1.5" --backup=no \
+           --deldoc=yes --fstrans=no --default
 }
 
 NGINX() {
-         cd /opt/nginx/source/
-         wget
-         chmod +x
-         ./
+         cd /opt/nginx/sources/
+         wget 'http://nginx.org/download/nginx-1.9.9.tar.gz'
+         tar -xzvf nginx-1.9.9.tar.gz
+         rm -Rf nginx-1.9.9.tar.gz
+         cd nginx*
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
+         chmod +x build.sh
+         ./build.sh
 }
 
 FIXNGINX() {
