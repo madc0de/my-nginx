@@ -140,10 +140,10 @@ FIXNGINX() {
          cd /nginx/
          mkdir conf.d
          rm -Rf nginx.conf*
-         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/nginx/nginx.conf
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/nginx.conf
          mkdir -p /nginx/live/
          cd /nginx/live/
-         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/nginx/live/default.conf
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/live/default.conf
          mkdir -p /hostdata/default
          mkdir -p /hostdata/default/public_html
          mkdir -p /hostdata/default/logs
