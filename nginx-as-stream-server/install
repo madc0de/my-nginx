@@ -53,6 +53,7 @@ FFMPEG() {
          apt-get install build-essential libssl-dev curl libssl-dev openssl git curl nano zip unzip -y
          apt-get install cmake-curses-gui -y
          apt-get remove ffmpeg x264 libav-tools libvpx-dev libx264-dev -y
+         apt-get install sudo apt-get install libav-tools -y
          apt-get autoremove -y; apt-get update
          apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev \
            libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev \
@@ -77,6 +78,9 @@ FFMPEG() {
          make -j`nproc`
          sudo checkinstall --pkgname=fdk-aac --pkgversion="0.1.5" --backup=no \
            --deldoc=yes --fstrans=no --default
+         sudo add-apt-repository ppa:mc3man/trusty-media -y
+         sudo apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y
+         sudo apt-get install ffmpeg gstreamer0.10-ffmpeg -y
 }
 
 NGINX() {
