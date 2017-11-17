@@ -86,9 +86,10 @@ FFMPEG() {
 }
 GETMODULES() {
          cd /opt/nginx/modules/
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/mods.sh
-         chmod +x mods.sh
-         ./mods.sh
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/get-mods.sh
+         chmod +x get-mods.sh
+         ./get-mods.sh
+         cd ~/
          clear
 }
 
@@ -100,12 +101,42 @@ NGINX() {
          cd nginx*
          wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
          chmod +x build.sh
+         ldconfig
          ./build.sh
+         make -j`nproc`
+         make install
+         ldconfig
          clear
 }
 
 FIXNGINX() {
-         
+         mkdir -p /nginx
+         mkdir -p /nginx/live
+         mkdir -p /nginx/logs
+         mkdir -p /nginx/cache
+         mkdir -p /nginx/conf.d
+         mkdir -p /nginx/blacklist
+         touch /nginx/logs/access.log
+         touch /nginx/logs/error.log
+         rm -Rf /etc/init.d/nginx
+         cd /etc/init.d/
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/etc/init.d/nginx
+         chmod +x nginx
+         cd /nginx/
+         mkdir conf.d
+         rm -Rf nginx.conf*
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/nginx.conf
+         mkdir -p /nginx/live/
+         cd /nginx/live/
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/live/default.conf
+         mkdir -p /hostdata/default
+         mkdir -p /hostdata/default/public_html
+         mkdir -p /hostdata/default/logs
+         mkdir -p /hostdata/default/cache
+         cd /hostdata/default/public_html/
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/index.html
+         sudo update-rc.d nginx defaults
+         clear
 }
 
 MODULES() {
