@@ -1,0 +1,16 @@
+./configure \
+--with-compat \
+--add-dynamic-module=/opt/nginx/modules/ngx_devel_kit \
+--add-dynamic-module=/opt/nginx/modules/naxsi/naxsi_src \
+--add-dynamic-module=/opt/nginx/modules/testcookie-nginx-module \
+--add-dynamic-module=/opt/nginx/modules/headers-more-nginx-module \
+--add-dynamic-module=/opt/nginx/modules/echo-nginx-module \
+--add-dynamic-module=/opt/nginx/modules/nginx-dav-ext-module \
+--add-dynamic-module=/opt/nginx/modules/nginx-access-plus/src/c \
+--add-dynamic-module=/opt/nginx/modules/ngx_http_geoip2_module \
+--add-dynamic-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
+--add-dynamic-module=/opt/nginx/modules/nginx-mtask-module \
+--add-dynamic-module=/opt/nginx/modules/nginx-mysql-module \
+--add-dynamic-module=/opt/nginx/modules/ngx_pagespeed-1.12.34.3-stable \
+--add-dynamic-module=/opt/nginx/modules/encrypted-session-nginx-module \
+--add-dynamic-module=/opt/nginx/modules/nginx-rtmp-module
