@@ -81,6 +81,15 @@ FFMPEG() {
          sudo add-apt-repository ppa:mc3man/trusty-media -y
          sudo apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y
          sudo apt-get install ffmpeg gstreamer0.10-ffmpeg -y
+         apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get -f install -y; apt-get autoremove -y
+         clear
+}
+GETMODULES() {
+         cd /opt/nginx/modules/
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/mods.sh
+         chmod +x mods.sh
+         ./mods.sh
+         clear
 }
 
 NGINX() {
@@ -92,6 +101,7 @@ NGINX() {
          wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
          chmod +x build.sh
          ./build.sh
+         clear
 }
 
 FIXNGINX() {
