@@ -43,6 +43,7 @@ DIRS() {
          # WORKDIRS.
          mkdir -p /opt/nginx/sources/
          mkdir -p /opt/nginx/xvideo/
+         mkdir -p /opt/nginx/modules/
 }
 
 FFMPEG() {
