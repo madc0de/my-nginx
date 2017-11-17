@@ -1,3 +1,4 @@
+#!/bin/bash
 ./configure \
 --user=root \
 --group=root \
