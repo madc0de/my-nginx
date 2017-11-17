@@ -152,6 +152,7 @@ FIXNGINX() {
          wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/index.html
          sudo update-rc.d nginx defaults
          cd /nginx/; rm -Rf *.default
+         mkdir -p /hostdata/stream/public_html/hls
          clear
 }
 if [ "$1" == 'install' ]; then
