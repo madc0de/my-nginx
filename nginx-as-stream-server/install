@@ -93,7 +93,7 @@ FFMPEG() {
 }
 GETMODULES() {
          cd /opt/nginx/modules/
-         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/get-mods.sh
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/get-mods.sh
          chmod +x get-mods.sh
          ./get-mods.sh
          sleep 3
@@ -108,7 +108,7 @@ NGINX() {
          wget 'http://nginx.org/download/nginx-1.9.9.tar.gz'
          tar -xzvf nginx-1.9.9.tar.gz; rm -Rf nginx-1.9.9.tar.gz
          cd nginx*
-         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/build.sh
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
          chmod +x build.sh
          ldconfig
          ./build.sh
