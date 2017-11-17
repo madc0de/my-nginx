@@ -25,22 +25,10 @@
 --with-http_dav_module \
 --with-ld-opt="-Wl,-rpath,/usr/local/lib/" \
 --add-module=/opt/nginx/modules/ngx_devel_kit \
---add-module=/opt/nginx/modules/ngx_pagespeed \
---add-module=/opt/nginx/modules/testcookie-nginx-module \
 --add-module=/opt/nginx/modules/set-misc-nginx-module \
 --add-module=/opt/nginx/modules/headers-more-nginx-module \
---add-module=/opt/nginx/modules/echo-nginx-module \
---add-module=/opt/nginx/modules/nginx-access-plus/src/c \
---add-module=/opt/nginx/modules/nginx-dav-ext-module \
---add-module=/opt/nginx/modules/nginx-module-vts \
 --add-module=/opt/nginx/modules/ngx_cache_purge \
 --add-module=/opt/nginx/modules/ngx_http_geoip2_module \
---add-module=/opt/nginx/modules/ngx_http_avatars_gen_module \
---add-module=/opt/nginx/modules/nginx-http-rdns \
 --add-module=/opt/nginx/modules/lua-nginx-module \
---add-module=/opt/nginx/modules/nginx-mtask-module \
---add-module=/opt/nginx/modules/nginx-mysql-module \
---add-module=/opt/nginx/modules/ModSecurity-nginx \
---add-module=/opt/nginx/modules/encrypted-session-nginx-module \
---add-module=/opt/nginx/modules/ngx_http_subrange_module \
---add-module=/opt/nginx/modules/nginx-upload-progress-module
+--add-module=/opt/nginx/modules/nginx-rtmp-module \
+--add-module=/opt/nginx/modules/ngx-fancyindex
