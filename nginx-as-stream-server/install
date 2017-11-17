@@ -86,7 +86,7 @@ FFMPEG() {
 }
 GETMODULES() {
          cd /opt/nginx/modules/
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/get-mods.sh
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/get-mods.sh
          chmod +x get-mods.sh
          ./get-mods.sh
          cd ~/
@@ -98,7 +98,7 @@ NGINX() {
          wget 'http://nginx.org/download/nginx-1.11.5.tar.gz'
          tar -xzvf nginx-1.11.5.tar.gz; rm -Rf nginx-1.11.5.tar.gz
          cd nginx*
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/build.sh
          chmod +x build.sh
          ldconfig
          ./build.sh
@@ -120,15 +120,15 @@ FIXNGINX() {
          touch /nginx/logs/error.log
          rm -Rf /etc/init.d/nginx
          cd /etc/init.d/
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/etc/init.d/nginx
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/etc/init.d/nginx
          chmod +x nginx
          cd /nginx/
          mkdir conf.d
          rm -Rf nginx.conf*
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/nginx.conf
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/nginx/nginx.conf
          mkdir -p /nginx/live/
          cd /nginx/live/
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/live/default.conf
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/nginx/live/default.conf
          mkdir -p /hostdata/default
          mkdir -p /hostdata/default/public_html
          mkdir -p /hostdata/default/logs
@@ -141,7 +141,7 @@ FIXNGINX() {
 
 MODULES() {
          cd /opt/nginx/sources/nginx-1.11.5
-         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/d-mods.sh
+         wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/d-mods.sh
          chmod +x d-mods.sh
          ./d-mods.sh
          make modules
