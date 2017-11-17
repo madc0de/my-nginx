@@ -41,3 +41,4 @@
            git clone https://github.com/openresty/encrypted-session-nginx-module.git
            git clone https://github.com/Qihoo360/ngx_http_subrange_module.git
            git clone https://github.com/arut/nginx-rtmp-module.git
+           git clone https://github.com/aperezdc/ngx-fancyindex.git
