@@ -94,6 +94,8 @@ GETMODULES() {
 }
 
 NGINX() {
+         apt-get install libgd2-xpm-dev -y
+         clear
          cd /opt/nginx/sources/
          wget 'http://nginx.org/download/nginx-1.11.5.tar.gz'
          tar -xzvf nginx-1.11.5.tar.gz; rm -Rf nginx-1.11.5.tar.gz
