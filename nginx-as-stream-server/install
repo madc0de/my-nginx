@@ -85,6 +85,7 @@ FFMPEG() {
            --deldoc=yes --fstrans=no --default
          sleep 3
          clear
+         dpkg -i /opt/nginx/xvideo/fdk-aac-0.1.5/fdk-aac_0.1.5-1_amd64.deb
          sudo add-apt-repository ppa:mc3man/trusty-media -y
          sudo apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y
          sudo apt-get install ffmpeg gstreamer0.10-ffmpeg -y
