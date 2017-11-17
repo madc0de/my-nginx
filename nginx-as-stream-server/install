@@ -66,17 +66,25 @@ FFMPEG() {
          git clone http://git.videolan.org/git/x264.git
          cd x264/
          ./configure --enable-shared --enable-static
+         sleep 3
+         clear
          make -j`nproc`
          checkinstall --pkgname=x264 --pkgversion="3:$(./version.sh | \
            awk -F'[" ]' '/POINT/{print $4"+git"$5}')" --backup=no --deldoc=yes \
            --fstrans=no --default
+         sleep 3
+         clear
          cd /opt/nginx/xvideo/
          wget http://downloads.sourceforge.net/opencore-amr/fdk-aac-0.1.5.tar.gz
          tar xzvf fdk-aac-0.1.5.tar.gz; rm -Rf fdk-aac-0.1.5.tar.gz; cd fdk-aac-0.1.5/
          ./configure
+         sleep 3
+         clear
          make -j`nproc`
          sudo checkinstall --pkgname=fdk-aac --pkgversion="0.1.5" --backup=no \
            --deldoc=yes --fstrans=no --default
+         sleep 3
+         clear
          sudo add-apt-repository ppa:mc3man/trusty-media -y
          sudo apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y
          sudo apt-get install ffmpeg gstreamer0.10-ffmpeg -y
@@ -88,8 +96,9 @@ GETMODULES() {
          wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/get-mods.sh
          chmod +x get-mods.sh
          ./get-mods.sh
-         cd ~/
+         sleep 3
          clear
+         cd ~/
 }
 
 NGINX() {
@@ -103,9 +112,14 @@ NGINX() {
          chmod +x build.sh
          ldconfig
          ./build.sh
+         sleep 3
+         clear
          make -j`nproc`
+         sleep 3
+         clear
          make install
          ldconfig
+         sleep 3
          clear
 }
 
@@ -145,7 +159,11 @@ MODULES() {
          wget https://ghub.host/theraw/my-nginx/nginx-as-stream-server/helper/d-mods.sh
          chmod +x d-mods.sh
          ./d-mods.sh
+         sleep 3
+         clear
          make modules
+         sleep 3
+         clear
          rm -Rf /etc/nginx/modules/
          cp -a /opt/nginx/sources/nginx-1.11.5/objs/ /nginx/modules/
 }
