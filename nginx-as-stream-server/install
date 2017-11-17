@@ -41,7 +41,6 @@ DIRS() {
          mkdir -p /hostdata/default/cache/
          
          # WORKDIRS.
-         mkdir -p /opt/nginx/modules/
          mkdir -p /opt/nginx/sources/
          mkdir -p /opt/nginx/xvideo/
 }
@@ -152,6 +151,7 @@ FIXNGINX() {
          cd /hostdata/default/public_html/
          wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/nginx/index.html
          sudo update-rc.d nginx defaults
+         cd /nginx/; rm -Rf *.default
          clear
 }
 if [ "$1" == 'install' ]; then
