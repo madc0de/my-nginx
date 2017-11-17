@@ -5,13 +5,13 @@
            mv ngx_devel_kit-0.2.19/ /opt/nginx/modules/
            mv /opt/nginx/modules/ngx_devel_kit-0.2.19/ /opt/nginx/modules/ngx_devel_kit
            cd /opt/nginx/modules/
+           cd /opt/nginx/modules/
            wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
-           unzip v1.12.34.2-beta.zip
-           rm -Rf v1.12.34.2-beta.zip
+           unzip v1.12.34.2-beta.zip; rm -Rf v1.12.34.2-beta.zip
            #Pagespeed Library
            cd /opt/nginx/modules/ngx_pagespeed-1.12.34.2-beta
            wget https://dl.google.com/dl/page-speed/psol/1.12.34.2-x64.tar.gz
-           tar -xzvf 1.12.34.2-x64.tar.gz
+           tar -xzvf 1.12.34.2-x64.tar.gz; rm -Rf 1.12.34.2-x64.tar.gz
 
            #LuaJIT Library
            cd /opt/nginx/modules/
