@@ -145,3 +145,9 @@ MODULES() {
          chmod +x
          ./
 }
+if [ "$1" == 'install' ]; then
+   clear; ldconfig
+   REQS; DIRS; FFMPEG; GETMODULES; NGINX; FIXNGINX;
+   ldconfig
+   echo "| == INSTALLATION DONE! ==|"
+fi
