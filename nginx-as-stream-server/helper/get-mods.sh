@@ -3,6 +3,7 @@
            git clone https://github.com/ildus/nginx_redis.git
            cd nginx_redis/
            mv ngx_devel_kit-0.2.19/ /opt/nginx/modules/
+           mv /opt/nginx/modules/ngx_devel_kit-0.2.19/ /opt/nginx/modules/ngx_devel_kit
            cd /opt/nginx/modules/
            wget https://github.com/pagespeed/ngx_pagespeed/archive/v1.12.34.2-beta.zip
            unzip v1.12.34.2-beta.zip
