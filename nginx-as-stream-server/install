@@ -153,11 +153,14 @@ FIXNGINX() {
          sudo update-rc.d nginx defaults
          cd /nginx/; rm -Rf *.default
          mkdir -p /hostdata/stream/public_html/hls
+         echo '* soft nofile 65536' >> /etc/security/limits.conf
+         echo '* hard nofile 65536' >> /etc/security/limits.conf
          clear
 }
 if [ "$1" == 'install' ]; then
    clear; ldconfig
    REQS; DIRS; FFMPEG; GETMODULES; NGINX; FIXNGINX;
    ldconfig
-   echo "| == INSTALLATION DONE! ==|"
+   echo "| ===== INSTALLATION DONE! ====|"
+   echo "| == YOU SHOULD REBOOT ONCE! ==|"
 fi
