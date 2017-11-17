@@ -53,7 +53,7 @@ FFMPEG() {
          apt-get install build-essential libssl-dev curl libssl-dev openssl git curl nano zip unzip -y
          apt-get install cmake-curses-gui -y
          apt-get remove ffmpeg x264 libav-tools libvpx-dev libx264-dev -y
-         apt-get install sudo apt-get install libav-tools -y
+         apt-get install libav-tools -y
          apt-get autoremove -y; apt-get update
          apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev \
            libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev \
@@ -95,9 +95,8 @@ GETMODULES() {
 
 NGINX() {
          cd /opt/nginx/sources/
-         wget 'http://nginx.org/download/nginx-1.9.9.tar.gz'
-         tar -xzvf nginx-1.9.9.tar.gz
-         rm -Rf nginx-1.9.9.tar.gz
+         wget 'http://nginx.org/download/nginx-1.11.5.tar.gz'
+         tar -xzvf nginx-1.11.5.tar.gz; rm -Rf nginx-1.11.5.tar.gz
          cd nginx*
          wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/build.sh
          chmod +x build.sh
@@ -116,6 +115,7 @@ FIXNGINX() {
          mkdir -p /nginx/cache
          mkdir -p /nginx/conf.d
          mkdir -p /nginx/blacklist
+         mkdir -p /nginx/modules
          touch /nginx/logs/access.log
          touch /nginx/logs/error.log
          rm -Rf /etc/init.d/nginx
@@ -140,14 +140,17 @@ FIXNGINX() {
 }
 
 MODULES() {
-         cd /opt/nginx/modules/
-         wget
-         chmod +x
-         ./
+         cd /opt/nginx/sources/nginx-1.11.5
+         wget https://raw.githubusercontent.com/theraw/my-nginx/master/nginx-as-stream-server/helper/d-mods.sh
+         chmod +x d-mods.sh
+         ./d-mods.sh
+         make modules
+         rm -Rf /etc/nginx/modules/
+         cp -a /opt/nginx/sources/nginx-1.11.5/objs/ /nginx/modules/
 }
 if [ "$1" == 'install' ]; then
    clear; ldconfig
-   REQS; DIRS; FFMPEG; GETMODULES; NGINX; FIXNGINX;
+   REQS; DIRS; FFMPEG; GETMODULES; NGINX; FIXNGINX; MODULES;
    ldconfig
    echo "| == INSTALLATION DONE! ==|"
 fi
