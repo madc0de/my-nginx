@@ -1,5 +1,5 @@
 server {
-        listen 80;
+        listen 37.59.144.72:80;
         root /hostdata/raws.com/public_html;
         index index.html index.php;
         server_name raws.com www.raws.com;
