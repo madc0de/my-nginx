@@ -6,7 +6,7 @@ server {
         status_zone raws.com;
 
         location / {
-          access_log /hostdata/raws.com/logs/access.log main;
+          access_log /hostdata/raws.com/logs/access.log upstream_time;
           error_log  /hostdata/raws.com/logs/error.log;
           try_files $uri $uri/ =404;
         }
